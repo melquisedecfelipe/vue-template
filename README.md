@@ -57,7 +57,7 @@ $ cd vue-template
 $ npm i
 
 # Run frontend
-$ npm start
+$ npm run serve
 ```
 
 ## :memo: License
