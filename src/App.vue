@@ -1,32 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view>
+      <Home />
+    </router-view>
   </div>
 </template>
 
+<script>
+import history from './services/history';
+
+import Home from './pages/Home.vue';
+
+export default {
+  name: 'app',
+  components: {
+    Home,
+  },
+  props: history,
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Helvetica, sans-serif;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+body {
+  color: #fff;
+  background: #0b0a0d;
+  background-image: url('./assets/bg.png');
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
 }
 </style>
