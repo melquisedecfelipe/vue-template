@@ -8,49 +8,11 @@
       <p>My bootstrap template to use in vue</p>
       <div>
         <Item
-          title="Axios"
-          description="Promise based HTTP client for the browser and node.js"
-          link="https://github.com/axios/axios"
-        />
-        <Item
-          title="Commitlint"
-          description="Lint commit messages"
-          link="https://github.com/conventional-changelog/commitlint"
-        />
-        <Item
-          title="Commitizen"
-          description="The commitizen command line utility"
-          link="https://github.com/commitizen/cz-cli"
-        />
-        <Item
-          title="Eslint"
-          description="Find and fix problems in your JavaScript code"
-          link="https://eslint.org/"
-        />
-        <Item
-          title="Eslint import helpers"
-          description="ESLint plugin to help enforce a configurable order for import statements"
-          link="https://github.com/Tibfib/eslint-plugin-import-helpers"
-        />
-        <Item
-          title="Husky"
-          description="Git hooks made easy"
-          link="https://github.com/typicode/husky"
-        />
-        <Item
-          title="Material design"
-          description="Material design icons for vue.js"
-          link="https://github.com/therufa/mdi-vue"
-        />
-        <Item
-          title="Vue.js"
-          description="The Progressive JavaScript Framework"
-          link="https://vuejs.org/"
-        />
-        <Item
-          title="Vue Router"
-          description="The official router for Vue.js"
-          link="https://router.vuejs.org/"
+          v-for="item in items"
+          :key="item.title"
+          :title="item.title"
+          :description="item.description"
+          :link="item.link"
         />
       </div>
     </main>
@@ -60,10 +22,27 @@
 <script>
 import Item from '../components/Item.vue';
 
+import api from '../services/api';
+
 export default {
-  name: 'about',
+  name: 'About',
   components: {
     Item,
+  },
+  data() {
+    return {
+      items: [1, 2, 3, 4, 5, 6],
+    };
+  },
+  created() {
+    const app = this;
+    async function getItems() {
+      const { data } = await api.get('5e133f493100005a8ad476cc');
+
+      app.items = data;
+    }
+
+    getItems();
   },
 };
 </script>
