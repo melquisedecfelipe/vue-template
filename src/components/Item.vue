@@ -1,11 +1,11 @@
 <template>
   <div class="item">
     <div>
-      <h3>{{ title }}</h3>
-      <p>{{ description }}</p>
+      <h3 :class="this.loading ? 'loading title' : ''">{{ loading ? '' : title }}</h3>
+      <p :class="this.loading ? 'loading description' : ''">{{ loading ? '' : description }}</p>
     </div>
-    <a :href="link">
-      <ArrowRight />
+    <a :href="link" :class="this.loading ? 'loading link' : ''">
+      <ArrowRight v-if="!this.loading" />
     </a>
   </div>
 </template>
@@ -22,6 +22,16 @@ export default {
   },
   components: {
     ArrowRight,
+  },
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   },
 };
 </script>
@@ -77,6 +87,47 @@ export default {
 
   &:hover {
     border-color: #7159c1;
+  }
+
+  & .loading {
+    width: 100%;
+    height: 38px;
+    background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.4) 0px,
+      rgba(0, 0, 0, 0.5) 150px,
+      rgba(0, 0, 0, 0.4) 300px
+    );
+    background-size: 600px;
+    animation: loading 1.5s infinite ease-out;
+  }
+
+  & .title {
+    width: 60%;
+  }
+
+  & .description {
+    margin: 20px 0 10px 0;
+  }
+
+  & .link {
+    margin-left: calc(100% - 24px);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: -300px;
+  }
+
+  50% {
+    background-position: 300px;
+  }
+
+  100% {
+    background-position: 600px;
   }
 }
 </style>
