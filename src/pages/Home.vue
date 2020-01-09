@@ -5,16 +5,14 @@
     </nav>
     <main>
       <h3>Vue Template</h3>
-      <a href="https://github.com/melquisedecfelipe/vue-template">
-        github.com/melquisedecfelipe
-      </a>
+      <a href="https://github.com/melquisedecfelipe/vue-template">github.com/melquisedecfelipe</a>
     </main>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'Home',
 };
 </script>
 
