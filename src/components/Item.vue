@@ -1,13 +1,13 @@
 <template>
-  <div class="item">
+  <a :href="link" target="_blank" rel="noopener noreferrer" class="item">
     <div>
       <h3 :class="this.loading ? 'loading title' : ''">{{ loading ? '' : title }}</h3>
       <p :class="this.loading ? 'loading description' : ''">{{ loading ? '' : description }}</p>
     </div>
-    <a :href="link" :class="this.loading ? 'loading link' : ''">
+    <span :class="this.loading ? 'loading link' : ''">
       <ArrowRight v-if="!this.loading" />
-    </a>
-  </div>
+    </span>
+  </a>
 </template>
 
 <script>
@@ -43,13 +43,15 @@ export default {
   justify-content: space-between;
   height: 100%;
   background-color: #121212;
-  box-shadow: 0px 10px 20px #00000014;
   border-radius: 5px;
   padding: 30px;
   border: solid 2px #111;
   -webkit-transition: border-color 0.15s ease;
   -moz-transition: border-color 0.15s ease;
   transition: border-color 0.15s ease;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
 
   > div {
     height: 100%;
@@ -67,22 +69,12 @@ export default {
     }
   }
 
-  > a {
+  > span {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     font-size: 1.5em;
     color: #7159c1;
-    text-decoration: none;
-    -webkit-transition: color 0.15s ease;
-    -moz-transition: color 0.15s ease;
-    transition: color 0.15s ease;
-
-    &:hover {
-      color: #a191d6;
-      text-shadow: none;
-      border: none;
-    }
   }
 
   &:hover {
