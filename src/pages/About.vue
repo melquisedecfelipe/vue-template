@@ -37,7 +37,7 @@ export default {
   created() {
     const app = this;
     async function getItems() {
-      const { data } = await api.get('5e133f493100005a8ad476cc');
+      const { data } = await api.get('5e833f403100004c00e6448d');
 
       app.items = data;
     }
